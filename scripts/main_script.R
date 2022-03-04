@@ -1,6 +1,13 @@
-##Remember to add up here a lot of detail on the code's purpose
-#the paper, where it was published etc
-#and the methodology
+'#This code is producing the maps for the journal article
+
+Evidence of wildfire in the British Isles during the Last Glacial-Interglacial Transition: 
+Revealing spatiotemporal patterns and controls
+
+https://doi.org/10.1016/j.pgeola.2020.05.001
+
+The code is split in two parts. The first constructs the dataset and the second 
+produces the maps figures'
+
 
 #This script makes the dataset
 

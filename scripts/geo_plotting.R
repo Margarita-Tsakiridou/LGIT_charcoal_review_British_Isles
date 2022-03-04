@@ -16,8 +16,8 @@ Figure_1 <- ggplot(data = world) +
   geom_point(data = dataset1, aes(x = long, y = lat), size = 2, 
              shape = 19) +
   geom_text_repel(data = dataset1, aes(x = long, y = lat, label = id), 
-                  size = 2, col = "black",  max.overlaps =20) +
-  coord_sf(xlim = c(-11, 3), ylim = c(49, 61), expand = FALSE)
+                  size = 2, col = "black",  max.overlaps =40) +
+  coord_sf(xlim = c(-11, 3), ylim = c(49.5, 61), expand = FALSE)
 
 #got some advice this site for labels https://r-spatial.org/r/2018/10/25/ggplot2-sf-2.html
 
@@ -26,9 +26,15 @@ Figure_1 <- ggplot(data = world) +
 
 Figure_2 <- ggplot(data = world) +
   geom_sf() + theme_minimal()+
-  geom_point(data = dataset, aes(x = long, y = lat, shape = method, color = charcoal), size = 2)+
-  coord_sf(xlim = c(-12, 5), ylim = c(49, 62), expand = FALSE) +
-  facet_wrap(~interval)
+  geom_point(data = dataset, aes(x = long, y = lat, fill = charcoal, shape = method), size = 2)+
+  scale_fill_manual(values = c("0" = "green4", "1" = "red"))+
+  scale_shape_manual(values =c("band" = 8, "pollen-slide" = 21, "sieving" = 24))+
+  coord_sf(xlim = c(-10, 2.5), ylim = c(49.5, 61), expand = FALSE) +
+  facet_wrap(~interval) +
+  guides(shape = guide_legend(order =1),
+         color = guide_legend(order=2))
+  
+Figure_2
 
 #change shapes and colours
 

@@ -9,7 +9,10 @@ bands <- read_excel('./data/Appendix 1.1 Thesis.xlsx', sheet=2) %>% mutate(type 
 
 dataset <- rbind(records,bands) %>% select(-2,-5,-7) %>% pivot_longer(cols=5:8, names_to= "interval", values_to = "charcoal")
 
-dataset$interval <-factor(dataset$interval, levels = c("gs_2", "gi_1", "gs_1", "early_holocene"))
+dataset <- dataset %>% mutate(interval = recode(interval, "gs_2" = "GS-2", "gi_1" = "GI-1", "gs_1" = "GS-1", "early_holocene" = "Early Holocene"))
+dataset$interval <-factor(dataset$interval, levels = c("GS-2", "GI-1", "GS-1", "Early Holocene"))
+
+
 #dataset$interval <-factor(dataset$interval, levels = c("GS_2", "GI_1", "GS-1", "Early_Holocene"))
 
 dataset$charcoal= case_when(
