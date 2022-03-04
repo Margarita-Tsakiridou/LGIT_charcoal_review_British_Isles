@@ -10,7 +10,7 @@ bands <- read_excel('./data/Appendix 1.1 Thesis.xlsx', sheet=2) %>% mutate(type 
 dataset <- rbind(records,bands) %>% select(-2,-5,-7) %>% pivot_longer(cols=5:8, names_to= "interval", values_to = "charcoal")
 
 dataset$interval <-factor(dataset$interval, levels = c("gs_2", "gi_1", "gs_1", "early_holocene"))
-
+#dataset$interval <-factor(dataset$interval, levels = c("GS_2", "GI_1", "GS-1", "Early_Holocene"))
 
 dataset$charcoal= case_when(
   dataset$charcoal == "x" ~ "x",
@@ -22,6 +22,8 @@ dataset$charcoal= case_when(
 )
 
 
-dataset$charcoal <- as.numeric(dataset$charcoal)
+dataset <- dataset %>% filter(charcoal != "x")
+dataset$charcoal <- as.factor(dataset$charcoal)
 
-str(dataset)
+
+rm(bands, records)
