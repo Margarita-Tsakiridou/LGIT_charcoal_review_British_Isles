@@ -33,10 +33,6 @@ Figure_2 <- ggplot(data = world) +
   facet_wrap(~interval) +
   guides(shape = guide_legend(order =1),
          color = guide_legend(order=2))
-  
-Figure_2
-
-#change shapes and colours
 
 rm(world, dataset1)
 
