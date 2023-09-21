@@ -3,21 +3,37 @@
 Evidence of wildfire in the British Isles during the Last Glacial-Interglacial Transition: 
 Revealing spatiotemporal patterns and controls
 
-https://doi.org/10.1016/j.pgeola.2020.05.001
-
-The code is split in two parts. The first constructs the dataset and the second 
-produces the maps figures'
+https://doi.org/10.1016/j.pgeola.2020.05.001'
 
 
-#This script makes the dataset
+# Packages
+
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rgeos)
+library(ggrepel)
+
+
+#This scripts creates, cleans and formats the data
 
 source("./scripts/dataset.R")
 
-str(dataset)
-
-#This script produces the 2 map figures
+#This script produces Figures 1 and 2 of the article.
 
 source("./scripts/geo_plotting.R")
+
+#Save the figs locally
+
+if (!dir.exists('./figures')) {
+  dir.create('./figures')
+}
+
+ggsave("./figures/Figure1.tiff",
+       Figure_1)
+
 
 Figure_1
 Figure_2
