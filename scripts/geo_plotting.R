@@ -59,8 +59,27 @@ Figure_2 <- ggplot(data = world) +
   guides(shape = guide_legend(order =1),
          color = guide_legend(order=2))
 
-
-Figure_2
-
 rm(world, 
    all_charcoal_data)
+
+
+
+
+##########################
+##       Saving        ##
+#########################
+
+if (!dir.exists('./figures')) {
+  dir.create('./figures')
+}
+
+
+ggsave("./figures/Figure1.tiff",
+       Figure_1,
+       bg = "white")
+
+
+ggsave("./figures/Figure2.tiff",
+       Figure_2,
+       bg = "white")
+
