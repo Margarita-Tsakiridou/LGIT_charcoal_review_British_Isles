@@ -25,16 +25,25 @@ source("./scripts/dataset.R")
 
 source("./scripts/geo_plotting.R")
 
+
+
 #Save the figs locally
 
 if (!dir.exists('./figures')) {
   dir.create('./figures')
 }
 
+grDevices::tiff("./figures/Figure1_tryII.tif",
+     compression = "none")
+
+
 ggsave("./figures/Figure1.tiff",
-       Figure_1)
+       Figure_1,
+       bg = "white") # this works but has no background!
 
 
-Figure_1
-Figure_2
+
+ggsave("./figures/Figure2.tiff",
+       Figure_2,
+       bg = "white")
 
